@@ -1,4 +1,4 @@
-package com.github.amykeibler;
+package io.github.amykeibler;
 
 import java.util.Locale;
 
