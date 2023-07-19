@@ -16,6 +16,7 @@
           packages = with pkgs; [
             maven
             jdk17
+            gnupg
 
             # Nix tooling
             nixpkgs-fmt
