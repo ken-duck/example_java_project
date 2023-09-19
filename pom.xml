@@ -6,7 +6,7 @@
 
   <groupId>io.github.amy-keibler</groupId>
   <artifactId>example_java_project</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.5</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>An example library that demonstrates the Central Publish Plugin.</description>
@@ -42,11 +42,6 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    <!-- Publishing properties -->
-    <publishing.server.id>central.staging</publishing.server.id>
-    <centralBaseUrl>https://staging.portal.central.sonatype.dev</centralBaseUrl>
-    <tokenAuth>true</tokenAuth>
   </properties>
 
   <build>
@@ -100,8 +95,13 @@
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.1.2</version>
         <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central.staging</publishingServerId>
+          <centralBaseUrl>https://staging.portal.central.sonatype.dev</centralBaseUrl>
+          <tokenEnabled>true</tokenEnabled>
+        </configuration>
       </plugin>
     </plugins>
   </build>
