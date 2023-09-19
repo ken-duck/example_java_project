@@ -6,7 +6,7 @@
 
   <groupId>io.github.amy-keibler</groupId>
   <artifactId>example_java_project</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>An example library that demonstrates the Central Publish Plugin.</description>
@@ -101,6 +101,7 @@
           <publishingServerId>central.staging</publishingServerId>
           <centralBaseUrl>https://staging.portal.central.sonatype.dev</centralBaseUrl>
           <tokenEnabled>true</tokenEnabled>
+          <deploymentName>${project.artifactId} (${project.version})</deploymentName>
         </configuration>
       </plugin>
     </plugins>
