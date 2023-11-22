@@ -38,6 +38,8 @@ build/
 .DS_Store
 
 settings.xml
+settings-local.xml
+settings-staging.xml
 
 # Nix
 /.direnv

@@ -5,14 +5,17 @@
 In order to use this, you'll need to create a `settings.xml` file. You can copy [`settings-example.xml`][settings] as a
 starting point and then fill in the credentials with your user token information generated on the [Central Portal][csc].
 
+The default server URL is `http://localhost:3000`, so if you want to publish to staging, you'll need to pass `-Dcentral.url=https://staging.portal.central.sonatype.dev` via the commandline.
+
 ## Usage
 
 ```shell
 mvn --settings settings.xml clean deploy
 ```
 
-Note: Using the Nix DevShell will set the settings file via an environment variable, so passing it in manually should
-not be required.
+### Usage (Nix)
+
+The `flake.nix` file provides `mvnLocal` and `mvnStaging` commands that expect a `settings-local.xml` and `settings-staging.xml` file, respectively.
 
 <!-- References -->
 
