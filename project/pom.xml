@@ -4,10 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>io.github.amy-keibler</groupId>
+    <artifactId>example_java_project_parent</artifactId>
+    <version>0.1.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
   <groupId>io.github.amy-keibler</groupId>
-  <artifactId>example_java_project_parent</artifactId>
+  <artifactId>example_java_project</artifactId>
   <version>0.1.0</version>
-  <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>An example library that demonstrates the Central Publish Plugin.</description>
@@ -17,11 +23,6 @@
     <developerConnection>scm:git:ssh://github.com:amy-keibler/example_java_project.git</developerConnection>
     <url>https://github.com/amy-keibler/example_java_project/tree/main</url>
   </scm>
-
-  <modules>
-    <module>project</module>
-    <module>subproject</module>
-  </modules>
 
   <licenses>
     <license>
