@@ -1,4 +1,4 @@
-package io.github.amykeibler;
+package io.github.amykeibler.weird.weird_parent.weird_child;
 
 import java.util.Locale;
 
@@ -14,9 +14,5 @@ public class Example
    */
   public String example(String input) {
     return input.toLowerCase(Locale.getDefault());
-  }
-
-  public boolean isExample(String input) {
-    return true;
   }
 }

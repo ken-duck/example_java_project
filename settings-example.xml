@@ -7,4 +7,21 @@
       <password><!-- Add your generated user token password here --></password>
     </server>
   </servers>
+
+  <profiles>
+    <profile>
+      <id>central-testing</id>
+      <repositories>
+        <repository>
+          <id>central-testing-repo</id>
+          <name>Central Testing repository</name>
+          <url><!-- Add your instance's URL here --></url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>central-testing</activeProfile>
+  </activeProfiles>
 </settings>

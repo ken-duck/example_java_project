@@ -11,12 +11,13 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>io.github.amy-keibler.subproject</groupId>
-  <artifactId>example_java_subproject</artifactId>
+  <groupId>io.github.amy-keibler.weird</groupId>
+  <artifactId>weird_parent</artifactId>
   <version>0.1.7</version>
+  <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
-  <description>An example library that demonstrates the Central Publish Plugin and submodules.</description>
+  <description>An example library that demonstrates the Central Publish Plugin and weird submodules.</description>
   <url>https://github.com/amy-keibler/example_java_project</url>
   <scm>
     <connection>scm:git:git://github.com/amy-keibler/example_java_project.git</connection>

@@ -6,7 +6,7 @@
 
   <groupId>io.github.amy-keibler</groupId>
   <artifactId>example_java_project_parent</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.7</version>
   <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -21,6 +21,8 @@
   <modules>
     <module>project</module>
     <module>subproject</module>
+    <module>weird</module>
+    <module>weird/subproject</module>
   </modules>
 
   <licenses>
@@ -50,69 +52,78 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <central.url>http://localhost:3000</central.url>
+
+    <deployment.autoPublish>false</deployment.autoPublish>
+    <deployment.waitUntil>validated</deployment.waitUntil>
   </properties>
 
-  <build>
-    <plugins>
-      <!-- Publishing requires source jars -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.3.0</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Publishing requires javadocs jars -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.5.0</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Publishing requires PGP signatures -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- The publishing plugin -->
-      <plugin>
-        <groupId>org.sonatype.central</groupId>
-        <artifactId>central-publishing-maven-plugin</artifactId>
-        <version>0.1.2</version>
-        <extensions>true</extensions>
-        <configuration>
-          <publishingServerId>central.testing</publishingServerId>
-          <centralBaseUrl>${central.url}</centralBaseUrl>
-          <tokenEnabled>true</tokenEnabled>
-          <deploymentName>${project.artifactId} (${project.version})</deploymentName>
-          <waitForPublishCompletion>false</waitForPublishCompletion>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <!-- Publishing requires source jars -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.0</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Publishing requires javadocs jars -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.5.0</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Publishing requires PGP signatures -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- The publishing plugin -->
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.3.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central.testing</publishingServerId>
+              <centralBaseUrl>${central.url}</centralBaseUrl>
+              <tokenAuth>true</tokenAuth>
+              <deploymentName>${project.artifactId} (${project.version})</deploymentName>
+              <autoPublish>${deployment.autoPublish}</autoPublish>
+              <waitUntil>${deployment.waitUntil}</waitUntil>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
