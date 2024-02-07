@@ -17,8 +17,11 @@
           runtimeInputs = with pkgs; [ maven ];
 
           text = ''
+            #!/usr/bin/env bash
+            git_root=$(git rev-parse --show-toplevel)
+            settings_file="$git_root/${settingsFile}"
             mvn \
-               --settings='${settingsFile}' \
+               --settings="$settings_file" \
               -Dcentral.url='${centralUrl}'\
                "$@";
           '';
