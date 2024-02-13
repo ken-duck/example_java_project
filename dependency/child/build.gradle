@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    maven {
+        name = "centralTesting"
+        url "http://localhost:3000/api/v1/publisher/deployment/download/fromAnyValidatedDeployment/"
+        allowInsecureProtocol = true
+        credentials(HttpHeaderCredentials)
+        authentication {
+            header(HttpHeaderAuthentication)
+        }
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.github.amy-keibler.dependency:example_dependency_parent:0.1.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+version = '1.2.1'

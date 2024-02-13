@@ -43,6 +43,7 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             maven
+            gradle
             jdk17
             gnupg
 

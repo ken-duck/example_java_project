@@ -38,6 +38,13 @@ This project creates a structure that demonstrates several patterns that we have
 observed in deployments. It is meant to provide a quick smoke test for
 publishing functionality.
 
+### Dependency
+
+Entrypoint: [`dependency/README.md`](dependency/README.md)
+
+This project demonstrates doing pre-publish verification of a deployment via the
+Central Publisher Portal.
+
 <!-- References -->
 
 [settings]: ./settings-example.xml
