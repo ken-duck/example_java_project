@@ -5,7 +5,7 @@ plugins {
 repositories {
     maven {
         name = "centralTesting"
-        url "http://localhost:3000/api/v1/publisher/deployment/download/fromAnyValidatedDeployment/"
+        url "http://localhost:3000/api/v1/publisher/deployments/download/"
         allowInsecureProtocol = true
         credentials(HttpHeaderCredentials)
         authentication {
