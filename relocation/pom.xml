@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.amy-keibler.dependency</groupId>
-  <artifactId>example_dependency_child</artifactId>
+  <groupId>io.github.amy-keibler.relocation</groupId>
+  <artifactId>example_java_project</artifactId>
   <version>0.1.1</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -37,6 +37,16 @@
     </developer>
   </developers>
 
+  <!-- Relocate this project to the basic example -->
+  <distributionManagement>
+    <relocation>
+      <groupId>io.github.amy-keibler.basic</groupId>
+      <message>Relocated to the basic example namespace</message>
+    </relocation>
+  </distributionManagement>
+  <!-- Do not build jar files -->
+  <packaging>pom</packaging>
+
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
@@ -49,56 +59,11 @@
     <deployment.waitUntil>validated</deployment.waitUntil>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>io.github.amy-keibler.dependency</groupId>
-      <artifactId>example_dependency_parent</artifactId>
-      <version>0.1.0</version>
-    </dependency>
-
-    <!-- Dependency from Central -->
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.15.1</version>
-    </dependency>
-  </dependencies>
-
   <profiles>
     <profile>
       <id>release</id>
       <build>
         <plugins>
-          <!-- Publishing requires source jars -->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <version>3.3.0</version>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>jar-no-fork</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <!-- Publishing requires javadocs jars -->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.5.0</version>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
           <!-- Publishing requires PGP signatures -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>

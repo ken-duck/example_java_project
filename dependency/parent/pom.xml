@@ -6,7 +6,7 @@
 
   <groupId>io.github.amy-keibler.dependency</groupId>
   <artifactId>example_dependency_parent</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>An example library that demonstrates the Central Publish Plugin.</description>
@@ -103,7 +103,7 @@
           <plugin>
             <groupId>org.sonatype.central</groupId>
             <artifactId>central-publishing-maven-plugin</artifactId>
-            <version>0.3.0</version>
+            <version>0.4.0</version>
             <extensions>true</extensions>
             <configuration>
               <publishingServerId>central.testing</publishingServerId>
