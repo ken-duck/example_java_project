@@ -26,9 +26,15 @@ The `flake.nix` file provides `mvnLocal` and `mvnStaging` commands that expect a
 
 ### Basic
 
-Entrypoint: [`basic/pom.xml`](`basic/pom.xml`)
+Entrypoint: [`basic/pom.xml`](basic/pom.xml)
 
 This project demonstrates the minimum viable publishing setup.
+
+### Classless
+
+Entrypoint: [`classless/pom.xml`](classless/pom.xml)
+
+This project demonstrates the ability to publish JAR files without Java classes.
 
 ### Complex Structure
 
