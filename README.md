@@ -51,6 +51,20 @@ Entrypoint: [`dependency/README.md`](dependency/README.md)
 This project demonstrates doing pre-publish verification of a deployment via the
 Central Publisher Portal.
 
+### Different GroupId and Package
+
+This project is a test case to ensure that `.jar` files that have a different
+classpath/packaging than the `groupId` in the `pom.xml` files are successfully
+rejected by the validation rules.
+
+### Relocation
+
+This project is a test case for generating a relocation POM for an existing project.
+
+### Snapshot
+
+This project is a test case for publishing and consuming `-SNAPSHOT` releases.
+
 <!-- References -->
 
 [settings]: ./settings-example.xml

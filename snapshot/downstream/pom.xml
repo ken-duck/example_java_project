@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.amy-keibler.snapshot</groupId>
+  <artifactId>example_java_project_snapshot_dependency</artifactId>
+  <version>0.1.1</version>
+
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>An example library that demonstrates the Central Publish Plugin.</description>
+  <url>https://github.com/amy-keibler/example_java_project</url>
+  <scm>
+    <connection>scm:git:git://github.com/amy-keibler/example_java_project.git</connection>
+    <developerConnection>scm:git:ssh://github.com:amy-keibler/example_java_project.git</developerConnection>
+    <url>https://github.com/amy-keibler/example_java_project/tree/main</url>
+  </scm>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+    <license>
+      <name>MIT License</name>
+      <url>https://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Amy Keibler</name>
+      <email>akeibler@sonatype.com</email>
+      <organization>Sonatype</organization>
+      <organizationUrl>https://www.sonatype.com</organizationUrl>
+    </developer>
+  </developers>
+
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <central.url>http://localhost:3000</central.url>
+  </properties>
+
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+      <name>Central Portal Staging</name>
+      <id>central-portal-snapshots</id>
+      <url>${central.url}/repository/maven-snapshots/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.github.amy-keibler.snapshot</groupId>
+      <artifactId>example_java_snapshot_project</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>
