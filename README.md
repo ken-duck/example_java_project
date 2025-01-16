@@ -59,7 +59,12 @@ rejected by the validation rules.
 
 ### Relocation
 
-This project is a test case for generating a relocation POM for an existing project.
+This project is a test case for generating a relocation POM for an existing
+project.
+
+### Sigstore
+
+This projext is a test case for publishing with sigstore signatures.
 
 ### Snapshot
 
