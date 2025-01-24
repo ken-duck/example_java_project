@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>io.github.amy-keibler</groupId>
+    <groupId>ca.twoducks</groupId>
     <artifactId>example_java_project_parent</artifactId>
     <version>0.1.7</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>io.github.amy-keibler</groupId>
+  <groupId>ca.twoducks</groupId>
   <artifactId>example_java_project</artifactId>
   <version>0.1.7</version>
 
