@@ -1,0 +1,155 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ca.twoducks</groupId>
+  <artifactId>greetings-maven-plugin</artifactId>
+  <version>1.0</version>
+  <packaging>maven-plugin</packaging>
+  <name>Sample Parameter-less Maven Plugin</name>
+
+  <description>An example maven plugin.</description>
+  <url>https://github.com/ken-duck/example_java_project</url>
+  <scm>
+    <connection>scm:git:git://github.com/ken-duck/example_java_project.git</connection>
+    <developerConnection>scm:git:ssh://github.com:ken-duck/example_java_project.git</developerConnection>
+    <url>https://github.com/ken-duck/example_java_project/tree/main</url>
+  </scm>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+    <license>
+      <name>MIT License</name>
+      <url>https://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Ken Duck</name>
+      <email>kduck@sonatype.com</email>
+      <organization>Sonatype</organization>
+      <organizationUrl>https://www.sonatype.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <properties>
+    <maven-plugin-tools.version>3.15.1</maven-plugin-tools.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <central.url>http://localhost:3000</central.url>
+
+    <deployment.autoPublish>false</deployment.autoPublish>
+    <deployment.waitUntil>validated</deployment.waitUntil>
+  </properties>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <!-- Publishing requires source jars -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.0</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Publishing requires javadocs jars -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.5.0</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Publishing requires PGP signatures -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- The publishing plugin -->
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.4.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central.testing</publishingServerId>
+              <centralBaseUrl>${central.url}</centralBaseUrl>
+              <tokenAuth>true</tokenAuth>
+              <deploymentName>${project.artifactId} (${project.version})</deploymentName>
+              <autoPublish>${deployment.autoPublish}</autoPublish>
+              <waitUntil>${deployment.waitUntil}</waitUntil>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>3.9.9</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- dependency on annotations -->
+    <dependency>
+      <groupId>org.apache.maven.plugin-tools</groupId>
+      <artifactId>maven-plugin-annotations</artifactId>
+      <version>${maven-plugin-tools.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <version>${maven-plugin-tools.version}</version>
+          <executions>
+            <execution>
+              <id>help-mojo</id>
+              <goals>
+                <!-- good practice is to generate help mojo for plugin -->
+                <goal>helpmojo</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
