@@ -106,7 +106,7 @@
             <version>0.7.0</version>
             <extensions>true</extensions>
             <configuration>
-              <publishingServerId>central.testing</publishingServerId>
+              <publishingServerId>${central.id}</publishingServerId>
               <centralBaseUrl>${central.url}</centralBaseUrl>
               <centralSnapshotsUrl>${central.url}/repository/maven-snapshots/</centralSnapshotsUrl>
               <deploymentName>${project.artifactId} (${project.version})</deploymentName>

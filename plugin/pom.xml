@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ca.twoducks</groupId>
   <artifactId>greetings-maven-plugin</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>maven-plugin</packaging>
   <name>Sample Parameter-less Maven Plugin</name>
 
@@ -40,6 +40,9 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+<!--    <central.id>central.staging</central.id>-->
+<!--    <central.url>https://staging.portal.central.sonatype.dev</central.url>-->
+    <central.id>central.testing</central.id>
     <central.url>http://localhost:3000</central.url>
 
     <deployment.autoPublish>false</deployment.autoPublish>
@@ -103,7 +106,7 @@
             <version>0.4.0</version>
             <extensions>true</extensions>
             <configuration>
-              <publishingServerId>central.testing</publishingServerId>
+              <publishingServerId>${central.id}</publishingServerId>
               <centralBaseUrl>${central.url}</centralBaseUrl>
               <tokenAuth>true</tokenAuth>
               <deploymentName>${project.artifactId} (${project.version})</deploymentName>

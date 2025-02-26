@@ -43,7 +43,10 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <central.id>central.testing</central.id>
     <central.url>http://localhost:3000</central.url>
+<!--    <central.id>central.staging</central.id>-->
+<!--    <central.url>https://staging.portal.central.sonatype.dev</central.url>-->
 
     <deployment.autoPublish>false</deployment.autoPublish>
     <deployment.waitUntil>validated</deployment.waitUntil>
@@ -106,7 +109,7 @@
             <version>0.4.0</version>
             <extensions>true</extensions>
             <configuration>
-              <publishingServerId>central.testing</publishingServerId>
+              <publishingServerId>${central.id}</publishingServerId>
               <centralBaseUrl>${central.url}</centralBaseUrl>
               <tokenAuth>true</tokenAuth>
               <deploymentName>${project.artifactId} (${project.version})</deploymentName>
