@@ -2,9 +2,16 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ca.twoducks</groupId>
   <artifactId>greetings-maven-plugin</artifactId>
-  <version>1.1</version>
+  <version>1.15</version>
   <packaging>maven-plugin</packaging>
   <name>Sample Parameter-less Maven Plugin</name>
+
+  <distributionManagement>
+    <relocation>
+      <version>2.0.0</version>
+    </relocation>
+  </distributionManagement>
+
 
   <description>An example maven plugin.</description>
   <url>https://github.com/ken-duck/example_java_project</url>
@@ -40,13 +47,15 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <central.id>central.production</central.id>
+    <central.url>https://central.sonatype.com</central.url>
 <!--    <central.id>central.staging</central.id>-->
 <!--    <central.url>https://staging.portal.central.sonatype.dev</central.url>-->
-    <central.id>central.testing</central.id>
-    <central.url>http://localhost:3000</central.url>
+<!--    <central.id>central.testing</central.id>-->
+<!--    <central.url>http://localhost:3000</central.url>-->
 
-    <deployment.autoPublish>false</deployment.autoPublish>
-    <deployment.waitUntil>validated</deployment.waitUntil>
+<!--    <deployment.autoPublish>true</deployment.autoPublish>-->
+<!--    <deployment.waitUntil>validated</deployment.waitUntil>-->
   </properties>
 
   <profiles>

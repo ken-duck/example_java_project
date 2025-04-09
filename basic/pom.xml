@@ -49,6 +49,13 @@
     <deployment.waitUntil>validated</deployment.waitUntil>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>ca.twoducks</groupId>
+      <artifactId>greetings-maven-plugin</artifactId>
+      <version>1.15</version>
+    </dependency>
+  </dependencies>
   <profiles>
     <profile>
       <id>release</id>
