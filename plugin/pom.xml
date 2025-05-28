@@ -2,15 +2,15 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ca.twoducks</groupId>
   <artifactId>greetings-maven-plugin</artifactId>
-  <version>1.15</version>
+  <version>1.30.0</version>
   <packaging>maven-plugin</packaging>
   <name>Sample Parameter-less Maven Plugin</name>
 
-  <distributionManagement>
-    <relocation>
-      <version>2.0.0</version>
-    </relocation>
-  </distributionManagement>
+<!--  <distributionManagement>-->
+<!--    <relocation>-->
+<!--      <version>2.0.0</version>-->
+<!--    </relocation>-->
+<!--  </distributionManagement>-->
 
 
   <description>An example maven plugin.</description>
@@ -47,12 +47,12 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <central.id>central.production</central.id>
-    <central.url>https://central.sonatype.com</central.url>
+<!--    <central.id>central.production</central.id>-->
+<!--    <central.url>https://central.sonatype.com</central.url>-->
 <!--    <central.id>central.staging</central.id>-->
 <!--    <central.url>https://staging.portal.central.sonatype.dev</central.url>-->
-<!--    <central.id>central.testing</central.id>-->
-<!--    <central.url>http://localhost:3000</central.url>-->
+    <central.id>central.testing</central.id>
+    <central.url>http://localhost:3000</central.url>
 
 <!--    <deployment.autoPublish>true</deployment.autoPublish>-->
 <!--    <deployment.waitUntil>validated</deployment.waitUntil>-->
@@ -114,6 +114,15 @@
             <artifactId>central-publishing-maven-plugin</artifactId>
             <version>0.4.0</version>
             <extensions>true</extensions>
+<!--            <executions>-->
+<!--              <execution>-->
+<!--                <id>publish</id>-->
+<!--                <phase>deploy</phase>-->
+<!--                <goals>-->
+<!--                    <goal>publish</goal>-->
+<!--                </goals>-->
+<!--              </execution>-->
+<!--            </executions>-->
             <configuration>
               <publishingServerId>${central.id}</publishingServerId>
               <centralBaseUrl>${central.url}</centralBaseUrl>
@@ -121,8 +130,24 @@
               <deploymentName>${project.artifactId} (${project.version})</deploymentName>
               <autoPublish>${deployment.autoPublish}</autoPublish>
               <waitUntil>${deployment.waitUntil}</waitUntil>
+<!--              <checksums>none</checksums>-->
             </configuration>
           </plugin>
+
+<!--          <plugin>-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-plugin-plugin</artifactId>-->
+<!--            <version>${maven-plugin-tools.version}</version>-->
+<!--            <executions>-->
+<!--              <execution>-->
+<!--                <id>help-mojo</id>-->
+<!--                <goals>-->
+<!--                  &lt;!&ndash; good practice is to generate help mojo for plugin &ndash;&gt;-->
+<!--                  <goal>helpmojo</goal>-->
+<!--                </goals>-->
+<!--              </execution>-->
+<!--            </executions>-->
+<!--          </plugin>-->
         </plugins>
       </build>
     </profile>
